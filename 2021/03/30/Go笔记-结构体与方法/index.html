@@ -20,28 +20,33 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Mantis">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Go通过类型别名和结构体来支持用户自定义类型，需要定义一个类型，它由一系列属性组成，每个属性都有自己的类型和值的时候，就应该使用结构体，它把数据聚集在一起。然后可以访问这些数据。有点像php、java中的class。 方法定义组成结构体类型的数据称之为字段，每个字段都有一个字段名和类型，且字段名是唯一的。 定义如下： 1234type identifier struct &amp;#123;  field">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go笔记-结构体与方法">
+<meta property="og:url" content="http://example.com/2021/03/30/Go%E7%AC%94%E8%AE%B0-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Mantis">
+<meta property="og:description" content="Go通过类型别名和结构体来支持用户自定义类型，需要定义一个类型，它由一系列属性组成，每个属性都有自己的类型和值的时候，就应该使用结构体，它把数据聚集在一起。然后可以访问这些数据。有点像php、java中的class。 方法定义组成结构体类型的数据称之为字段，每个字段都有一个字段名和类型，且字段名是唯一的。 定义如下： 1234type identifier struct &amp;#123;  field">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-30T07:29:33.000Z">
+<meta property="article:modified_time" content="2021-03-31T09:23:46.629Z">
 <meta property="article:author" content="Mantis">
+<meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/03/30/Go%E7%AC%94%E8%AE%B0-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Mantis</title>
+  <title>Go笔记-结构体与方法 | Mantis</title>
   
 
 
@@ -159,9 +164,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -177,10 +183,9 @@
       <meta itemprop="name" content="Mantis">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/30/Go%E7%AC%94%E8%AE%B0-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Go笔记-结构体与方法</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Go笔记-结构体与方法
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -203,7 +208,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Go通过类型别名和结构体来支持用户自定义类型，需要定义一个类型，它由一系列属性组成，每个属性都有自己的类型和值的时候，就应该使用结构体，它把数据聚集在一起。然后可以访问这些数据。有点像<code>php</code>、<code>java</code>中的<code>class</code>。</p>
+        <p>Go通过类型别名和结构体来支持用户自定义类型，需要定义一个类型，它由一系列属性组成，每个属性都有自己的类型和值的时候，就应该使用结构体，它把数据聚集在一起。然后可以访问这些数据。有点像<code>php</code>、<code>java</code>中的<code>class</code>。</p>
 <h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>组成结构体类型的数据称之为字段，每个字段都有一个字段名和类型，且字段名是唯一的。</p>
 <p>定义如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> identifier <span class="keyword">struct</span> &#123;</span><br><span class="line">  field1 type1</span><br><span class="line">  field2 type2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -234,614 +239,35 @@
 <p>组合结构体会出现一个问题，字段命名冲突，此时需要自行修改保证字段名不能一致。</p>
 </blockquote>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/29/Go%E7%AC%94%E8%AE%B0-%E5%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/29/Go%E7%AC%94%E8%AE%B0-%E5%8C%85/" class="post-title-link" itemprop="url">Go笔记-包</a>
-        </h2>
+          <div class="post-tags">
+              <a href="/tags/go/" rel="tag"><i class="fa fa-tag"></i> go</a>
+          </div>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-29 15:16:18" itemprop="dateCreated datePublished" datetime="2021-03-29T15:16:18+08:00">2021-03-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Go语言中的内置包(package)多达150多个，像<code>fmt</code>、<code>os</code>等，go语言的内置包称之为标准库，对应的列表可以查询<a target="_blank" rel="noopener" href="https://gowalker.org/search?q=gorepos">这里</a>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/29/Go%E7%AC%94%E8%AE%B0-%E5%8C%85/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/25/Go%E7%AC%94%E8%AE%B0-Map/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/25/Go%E7%AC%94%E8%AE%B0-Map/" class="post-title-link" itemprop="url">Go笔记-Map</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-25 13:57:32" itemprop="dateCreated datePublished" datetime="2021-03-25T13:57:32+08:00">2021-03-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Go语言中<code>Map</code>是一种元素对的集合<code>(key=&gt;value)</code>，一个<code>key</code>对应的值为<code>value</code>，可以根据<code>key</code>快速的定位到<code>value</code>，也称之为关联数组或者字典。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/25/Go%E7%AC%94%E8%AE%B0-Map/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/29/Go%E7%AC%94%E8%AE%B0-%E5%8C%85/" rel="prev" title="Go笔记-包">
+      <i class="fa fa-chevron-left"></i> Go笔记-包
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/18/Go%E7%AC%94%E8%AE%B0-%E6%95%B0%E7%BB%84%E4%B8%8E%E5%88%87%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/18/Go%E7%AC%94%E8%AE%B0-%E6%95%B0%E7%BB%84%E4%B8%8E%E5%88%87%E7%89%87/" class="post-title-link" itemprop="url">Go笔记-数组与切片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-18 11:35:36" itemprop="dateCreated datePublished" datetime="2021-03-18T11:35:36+08:00">2021-03-18</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Go与其他语言一样，使用<code>[]</code>来表示数组，不过数组在Go中不够灵活，几乎不怎么使用，而是使用切片<code>slice</code>来代替。切片<code>slice</code>在构建数组上非常便捷，而且功能强大。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/18/Go%E7%AC%94%E8%AE%B0-%E6%95%B0%E7%BB%84%E4%B8%8E%E5%88%87%E7%89%87/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/14/Go%E7%AC%94%E8%AE%B0-%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/14/Go%E7%AC%94%E8%AE%B0-%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Go笔记-函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-14 12:53:12" itemprop="dateCreated datePublished" datetime="2021-03-14T12:53:12+08:00">2021-03-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Go是编译型语言，所以函数编写的顺序是无关紧要的。编写多个函数的主要目的是将一个需要很多行代码的复杂问题分解为一系列简单的函数来解决，有助于代码复用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/14/Go%E7%AC%94%E8%AE%B0-%E5%87%BD%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/13/Go%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/13/Go%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">Go笔记-基础结构和数据类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-13 10:12:56" itemprop="dateCreated datePublished" datetime="2021-03-13T10:12:56+08:00">2021-03-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Go语言中基本的结构和数据类型：关键字与标识符、<code>Go</code>程序的基本结构和要素、常量、变量、<code>strings</code>和<code>strconv</code>包、时间和日期、指针。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/13/Go%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/12/Kubernetes%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/12/Kubernetes%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/" class="post-title-link" itemprop="url">Kubernetes中进行简单应用部署</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-12 15:13:48" itemprop="dateCreated datePublished" datetime="2021-03-12T15:13:48+08:00">2021-03-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>掌握了<code>k8s</code>的部署启动，还需要知道如何在<code>k8s</code>中部署相应的应用服务，所谓实践检验真理，在<code>k8s</code>中部署一个简单的<code>nginx</code>服务来上手。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/12/Kubernetes%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/11/Kubernetes%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%90%AF%E5%8A%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/11/Kubernetes%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%90%AF%E5%8A%A8/" class="post-title-link" itemprop="url">Kubernetes快速搭建与启动</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-11 17:15:33" itemprop="dateCreated datePublished" datetime="2021-03-11T17:15:33+08:00">2021-03-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Kubernetes(以下简称k8s)已经成为当下最流行的一款容器编排工具，而且目前很多公司都在往容器化方向发展，调研最多的也是k8s，我们公司目前也在逐步向k8s靠拢，使用k8s开放的api做一些服务开发；因此学习掌握k8s技术也成为刻不容缓的事。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/11/Kubernetes%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%90%AF%E5%8A%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/02/19/Redis%E9%9B%86%E7%BE%A4%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/19/Redis%E9%9B%86%E7%BE%A4%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">Redis集群快速搭建</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-19 13:14:36" itemprop="dateCreated datePublished" datetime="2019-02-19T13:14:36+08:00">2019-02-19</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>我们知道，对于大型应用而言，如何保证线上功能稳定是一件很重要的事情；大多数的web应用都会用到缓存来降低数据库的压力，而单机缓存服务带来的问题是，一旦单机机器挂掉，所有的应用将无法使用。因此就需要有多台机器来保证服务的稳定，这里就涉及到了集群的概念。下面以redis5.0为实例进行快速搭建一个简单的集群。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/02/19/Redis%E9%9B%86%E7%BE%A4%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/01/30/Redis%E5%9C%A8%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8286273">
-      <meta itemprop="name" content="Mantis">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mantis">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/30/Redis%E5%9C%A8%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" class="post-title-link" itemprop="url">Redis在实际工作中遇到的各种应用场景</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-30 13:39:48" itemprop="dateCreated datePublished" datetime="2019-01-30T13:39:48+08:00">2019-01-30</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>Redis作为一种内存类型的数据库工具，在实际工作中除了常见的用来做缓存外，还有很多实际的用处；如并发场景下的的事务锁、实现统计功能、sug等。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/01/30/Redis%E5%9C%A8%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -893,6 +319,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8new%E7%BB%99%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="nav-number">1.2.</span> <span class="nav-text">使用new给一个新的结构体分配内存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">工厂方法创建结构体实例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">强制使用工厂方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%AD%97%E6%AE%B5%E5%92%8C%E5%86%85%E5%B5%8C%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.5.</span> <span class="nav-text">匿名字段和内嵌结构体</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
