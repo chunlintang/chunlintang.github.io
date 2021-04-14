@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Go语言中没有继承和类的概念，但是有接口，通过接口可以实现面向对象中的很多特性。接口提供了一组方式来说明其对象的行为。 接口定义接口定义了一组方法，这些方法不包含其具体的实现，也不包含变量。如下： 12345type Foo interface &amp;#123;  Method1(params) return_type  Method2(params) return_type  ......&amp;#125">
+  <meta name="description" content="Go语言中没有继承和类的概念，但是有接口，通过接口可以实现面向对象中的很多特性。接口提供了一组方式来说明其对象的行为。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go笔记-接口与反射">
 <meta property="og:url" content="http://example.com/2021/04/02/Go%E7%AC%94%E8%AE%B0-%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="KirinTang">
-<meta property="og:description" content="Go语言中没有继承和类的概念，但是有接口，通过接口可以实现面向对象中的很多特性。接口提供了一组方式来说明其对象的行为。 接口定义接口定义了一组方法，这些方法不包含其具体的实现，也不包含变量。如下： 12345type Foo interface &amp;#123;  Method1(params) return_type  Method2(params) return_type  ......&amp;#125">
+<meta property="og:description" content="Go语言中没有继承和类的概念，但是有接口，通过接口可以实现面向对象中的很多特性。接口提供了一组方式来说明其对象的行为。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-02T06:30:33.000Z">
-<meta property="article:modified_time" content="2021-04-14T09:01:33.728Z">
+<meta property="article:modified_time" content="2021-04-14T10:50:50.152Z">
 <meta property="article:author" content="kirintang">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -209,6 +209,8 @@
 
       
         <p>Go语言中没有继承和类的概念，但是有接口，通过接口可以实现面向对象中的很多特性。接口提供了一组方式来说明其对象的行为。</p>
+<span id="more"></span>
+
 <h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>接口定义了一组方法，这些方法不包含其具体的实现，也不包含变量。如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Foo <span class="keyword">interface</span> &#123;</span><br><span class="line">  Method1(params) return_type</span><br><span class="line">  Method2(params) return_type</span><br><span class="line">  ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
